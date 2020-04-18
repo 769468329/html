@@ -700,12 +700,216 @@
 		嵌入式 c 						-> java -> 前端 -> 美工
 
 14. 动画（前端【移动互联】）- 美观夸张【扁平化】
+	梦幻西游，呼吸灯... 
 	语法
+		animation
+			1)关键帧定义
+				随着时间移动的一些列的css规则
+				@keyframes name {
+					0% {
+						width:100px
+					}
+					50% {
+						width:300px
+					}
+					100%{
+						width:150px;
+					}
+				}
+			2)动画定义
+				.move {
+					animation-name: move; 							指定关键帧名称
+					animation-duration: 2000ms; 				设置动画持续时间（from-to）
+					animation-timing-function: linear;  时间曲线
+					animation-fill-mode:backwards; 			动画完成后保持的规则（from/to）
+					animation-delay: 1000ms; 						持续时间
+					animation-iteration-count: infinite;重复次数
+					animation-direction:alternate-reverse; 	动画运行的方向
+					animation: 		以上的速写形式
+				}
+			3) 应用
+				<div class="move"></div>
+				开源组件库 
+				自定义组件库
+
+			flash (直播流-监控)
+				海康 flash
+			4) animation.css（css3 animation动画轮子）
+				1. 导入animation.css
+				2. 调用class
+
 	框架
 
 15. 过渡效果
+	一般表示在元素状态切换的时候的过渡效果
 
-16. 媒体查询（响应式布局）
+	transition-property
+		规则名
+		规则名1,规则名2[,...]
+		all
+		指明在状态切换的时候，哪些属性添加过渡效果
+
+	transition-duration
+		持续时间 ms/s
+	transition-timing-function
+		linear
+		steps
+	transition-delay 
+		延迟 ms/s
+	transition
+		transition-property transition-duration [transition-delay][transition-timing-function]
+
+16. 变形
+	transform 	
+		指定变形函数
+
+		1)旋转
+			rotate(deg) 	旋转度数
+			rotateX(deg)
+			rotateY(deg)
+			rotateZ(deg)
+		2) 平移
+			translate(长度)
+			translateX(长度)
+			translateY(长度)
+			translateZ(长度)
+		3) 放大
+			scale()
+			scaleX()
+			scaleY()
+		4) 拉伸
+			skew(deg)
+			skewX(deg)
+			skewY(deg)
+	transform-origin	
+		指定变形的原点
+
+17. 媒体查询（响应式布局）
+
+	@media(媒体查询条件) {
+		选择器 {
+			规则
+		}
+	}
+	1) 媒体查询的应用位置
+		1.直接应用在规则内部
+			<style>
+				html{
+					font-size:20px
+				}
+				@media screen and (max-width:1500px){
+
+				}
+			</style>
+		2.应用在link标签中
+			<link rel="stylesheet" href="./css/screen_small.css" media="(max-width: 1380px)">
+			<link rel="stylesheet" href="./css/screen_middle.css" media="(min-width: 1380px) and (max-width: 1500px)">
+			<link rel="stylesheet" href="./css/screen_large.css" media="(min-width: 1500px) and (max-width: 1780px)">
+			<link rel="stylesheet" href="./css/screen_xlarge.html" media=" (min-width: 1780px) ">
+		3.应用在style标签中
+			<style>
+			
+			</style>
+			<style media="screen and (max-width: 1380px)">
+				.wrapper {
+					width: 1105px;
+				}
+				html {
+					font-size: 20px;  
+				}
+			</style>
+			<style media="screen and (min-width: 1380px) and (max-width: 1500px)">
+				.wrapper {
+					width: 1200px;
+				}
+				html {
+					font-size: 25px;  
+				}
+			</style>
+
+	2)注意：
+		1. 如果我们编写的网页运行在pc中，那么一般要给固定宽度，但是这个宽度如果随着屏幕的宽度发生改变，我们就成为响应式（.wrapper）
+		2. 如果我们编写的网页运行在大屏上，一般就采用满屏铺，不用指定wrapper
+		3. 如果我们编写的网页运行在mobile中，一般就采用满屏铺，不用指定wrapper,但是需要响应式布局
+			如果手机宽屏（横放）
+				原先一行放4列，横放后一行放2列
+			手机
+			pad
+
+18. at规则（@）
+	1) @font-face
+	2) @keyframes
+	3) @media
+	4) @import
+		@import url
+		@import url list-of-media-queries;
+	5) @charset 
+		指定当前css文件的编码格式（说明当前文件是使用xx编码）
+
+19. css脚本语言（css预处理语言）【了解】
+	sass
+	less
+
+20. bootstrap4(思路，封装)【了解】
+	第三方库：iconfont/animation.css/bootstrap
+	bs 是css3的一个库，也就说我们如果用了这个库，就可以很少的去写css代码,因为css中提供了大量的选择及规则。我们只管通过类调用即可
+
+	css库
+	js库
+	组件库
+
+	bootstrap-reboot.css 		重置样式，类似于我们自己写的common.css，要比我们写的好多了
+	bootstrap-grid.css 			栅格布局（封装了flex布局【bs4封装float布局】）
+	bootstrap.css 					完整样式（包含重置样式，栅格布局，按钮，表格，下拉菜单，模态框...）
+
+
+	vue (组件库-栅格系统、组件[table,form,button])
+	
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	屏幕标准：
+		2560px 	宽屏高分辨率
+		1680px 	
+		1280px	正常屏幕
+
+	网易严选	 * -> 1090px
+	淘宝			* -> 1190px
+	京东 			* -> 1190px
+	美图			*	-> 1190px
+
+	腾讯：
+		2560px 	-> 1710px
+		1920px 	-> 1710px
+		1680px 	-> 1500px
+		1280px 	-> 1200px
+		* 			-> 1200px
+
+	新需求：
+		让你仿写的网易严选适应
+			1920px 	-> 1710px 	（screen>1780px）
+			1680px 	-> 1500px 	(1500px<screen<1780px)
+			1280px 	-> 1200px 	（screen < 1500px）
+
+		
+	手机端响应:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -----
